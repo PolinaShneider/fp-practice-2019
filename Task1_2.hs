@@ -16,12 +16,20 @@ cos :: Double -> Double
 cos x = todo
 
 -- наибольший общий делитель двух чисел
-gcd :: Integer -> Integer -> Integer
-gcd x y = todo
+gcdFunc :: Integer -> Integer -> Integer
+gcdFunc x y =
+  if y == 0
+  then x
+  else gcdFunc y (x `rem` y)
 
 -- существует ли полный целочисленный квадрат в диапазоне [from, to)?
 doesSquareBetweenExist :: Integer -> Integer -> Bool
-doesSquareBetweenExist from to = todo
+doesSquareBetweenExist from to = doesSquareBetweenExist' 1
+  where
+    doesSquareBetweenExist' x
+      | (x * x) < from && (x * x) < to = doesSquareBetweenExist' (x + 1)
+      | x * x >= to = False
+      | otherwise = True
 
 -- является ли дата корректной с учётом количества дней в месяце и
 -- вискокосных годов?
@@ -31,11 +39,14 @@ isDateCorrect day month year = todo
 -- возведение числа в степень, duh
 -- готовые функции и плавающую арифметику использовать нельзя
 pow :: Integer -> Integer -> Integer
-pow x y = todo
+pow x y
+  | y == 0 = 1
+  | y > 1 = x * pow x (y - 1)
+  | otherwise = x
 
 -- является ли данное число простым?
 isPrime :: Integer -> Bool
-isPrime x = todo
+isPrime x = null [n | n <- [2 .. x - 1], mod x n == 0]
 
 type Point2D = (Double, Double)
 
