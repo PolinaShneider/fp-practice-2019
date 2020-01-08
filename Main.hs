@@ -1,7 +1,9 @@
 module Main where
 
+import Prelude hiding (sum, reverse, map, product, elem)
 import Task1_1
 import Task1_2
+import Task2_2
 
 main
  = do
@@ -45,3 +47,22 @@ main
   print $ isPrime 1001
   print $ isPrime 24
   putStrLn "---"
+  putStrLn "Task2_2:"
+  putStrLn "sum:"
+  print $ sum [1, 2, 5]
+  putStrLn "reverse:"
+  print $ reverse [1, 2, 5]
+  putStrLn "map:"
+  print $ map (+ 1) [1, 2, 3]
+  putStrLn "product:"
+  print $ product [1, 2, 3]
+  putStrLn "matrix diagonal:"
+  print $ diagonal [[5,2,3], [1,5,3], [1,2,5]]
+  putStrLn "filterNot:"
+  print $ filterNot (> 2) [1, 2, 3]
+  putStrLn "elem:"
+  print $ elem 11 [1,5,11]
+  putStrLn "append:"
+  print $ append [1,2,3] [3,4,5]
+  putStrLn "groups:"
+  print $ groups [1,2,3,5,6,7,8,9] 3
